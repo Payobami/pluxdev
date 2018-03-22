@@ -1,0 +1,421 @@
+@import"nib"
+@import"typographic"
+
+rupture.scale = 0 400px 650px 800px 1050px 1800px
+rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Bitter|Ubuntu|Source+Sans+Pro|Acme|Raleway|Roboto|Poppins');
+typographic()
+t-present(1)
+
+
+
+
+.siteName
+  font-weight 700 !important;
+
+/*
+  Navigation Bar and offcanvas menu begins from here
+ */
+.navbar-offcanvas .navbar-toggle .icon-bar {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 300ms cubic-bezier(0.55, 0, 0.1, 1), opacity 300ms cubic-bezier(0.55, 0, 0.1, 1);
+  will-change: transform, opacity;
+}
+.navbar-offcanvas .navbar-toggle .icon-bar:nth-child(2) {
+  transform: rotate(45deg) translateY(5px) translateX(4px);
+}
+.navbar-offcanvas .navbar-toggle .icon-bar:nth-child(3) {
+  opacity: 0;
+}
+.navbar-offcanvas .navbar-toggle .icon-bar:nth-child(4) {
+  transform: rotate(-45deg) translateY(-5px) translateX(3px);
+}
+.navbar-offcanvas .navbar-toggle.collapsed .icon-bar {
+  opacity: 1;
+  transform: rotate(0) translateY(0) translateX(0);
+}
+.navbar-offcanvas .navbar-collapse {
+  background: #fff;
+  border-right: 1px solid;
+  border: none;
+  display: block !important;
+  height: calc(100vh - 50px) !important;
+  position: fixed;
+  width: 80%;
+  max-width: 350px;
+  z-index: 1;
+  transform: translate(0, 0);
+  transition: transform 300ms cubic-bezier(0.55, 0, 0.1, 1);
+  will-change: transform;
+}
+.navbar-offcanvas .navbar-collapse, .navbar-offcanvas .navbar-collapse[aria-expanded="false"] {
+  transform: translate(-100%, 0);
+}
+.navbar-offcanvas .navbar-collapse[aria-expanded="true"] {
+  transform: translate(0, 0);
+}
+
+.navbar-blue {
+  //background: #1E88E5;
+  background: #0A1857;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+}
+.navbar-blue .navbar-brand {
+  color: #fff !important;
+  font-family: 'Ubuntu', sans-serif;
+}
+.navbar-blue .navbar-nav a {
+  color: #FFF;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar-black {
+  background: #252623;
+  border: none;
+  border-radius: 0;
+  color: #FFF !important;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.navbar-black .navbar-brand {
+  color: #FFF !important;
+  font-family: 'Ubuntu', sans-serif;
+}
+.navbar-black .navbar-nav a {
+  color: #fff !important;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+.mobile-header
+  float right
+  ul
+    margin 0
+    padding 0
+
+    li
+      float: left
+      display block
+      min-width 45px
+      margin-right 7px
+      padding 15px 5px 0 3px
+      background #f00
+      min-height 50px
+      font-family: 'Ubuntu', sans-serif;
+
+
+      a
+        color #fff
+        font-family: 'Ubuntu', sans-serif;
+
+.signUpBg
+  background #f00
+
+body {
+  background: #fff;
+  margin 0 !important
+
+}
+
+
++below('s')
+  .navbar-black .navbar-nav > li > a {
+    color: #000 !important;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .navbar-black .navbar-nav > li.open > a,
+  .navbar-black .navbar-nav > li > a:hover {
+    color: #000 !important;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .form-style
+    background: none;
+    /*background: linear-gradient(-120deg, rgba(255,255,255,0.6), rgba(200,120,50,0.9));*/
+    padding: 0 !important;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color #fff
+    width 100%
+
+    input
+      width 100%
+
+  .navbar-border
+    border-bottom: 1px solid #fff
+
+
+
+
+@media (min-width: 768px) {
+  .navbar-offcanvas .navbar-collapse {
+    background: transparent;
+    height: auto !important;
+    width: auto;
+    max-width: none;
+    position: static;
+    transform: translate(0, 0) !important;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .navbar-blue .navbar-nav > li > a {
+    color: #fff;
+  }
+  .navbar-blue .navbar-nav > li.open > a,
+  .navbar-blue .navbar-nav > li > a:hover {
+    color: #fff;
+  }
+
+  .navbar-black .navbar-nav > li > a {
+    color: #000;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .navbar-black .navbar-nav > li.open > a,
+  .navbar-black .navbar-nav > li > a:hover {
+    color: #000;
+    font-family: 'Ubuntu', sans-serif;
+  }
+}
+
+
+.first_row
+  background  url("../img/block_chain3.png")
+  background-image  url("../img/block_chain3.png")
+  //background linear-gradient(rgba(18,60,121, 0.4), rgba(18,60,121.0.9)), url("../img/bond.png")
+  //background-image  linear-gradient(rgba(18,60,121, 0.4), rgba(18,60,121.0.9)), url("../img/bond.png")
+  //background #123c79
+  background-size cover
+  background-position center
+  min-height 560px
+  width 100%
+  padding-top 40px
+  background-attachment: fixed
+
+
+  .welcome_note
+    width: 100%
+
+    h2
+      color #fff
+      padding-top 60px
+      font-family 'Ubuntu', sans-serif
+    p
+      color #fff
+      font-size 18px
+      line-height 30px
+      font-family: 'Roboto', serif;
+
+
+.vision_page
+  width 100%
+  color #d2d2d2
+
+  h4
+    font-family 'Ubuntu', sans-serif
+    color #fff
+
+  h6
+    line-height 20px
+    color #d2d2d2
+
+
+.builtEth
+  background url("../img/built-on-ethereum.png")
+  background-image url("../img/built-on-ethereum.png")
+  background-position right
+  background-size cover
+
+
+.row_3
+  background url("../img/header3.png") no-repeat
+  background-image url("../img/header3.png") no-repeat
+  min-height 550px
+  margin 0
+
+@media only screen and (max-width: 1088px) {
+
+  #stats #batchsupply {
+    position: relative;
+  }
+}
+
+#stats {
+  background: #f2f6f9;
+  min-height: 100%;
+  padding: 5em 0
+}
+
+#stats .section-desc {
+  position: relative;
+  top: auto;
+  transform: none;
+  text-align: center;
+  margin: auto
+}
+
+#stats .section-desc .section-label {
+  display: inline-block
+}
+
+#stats #currentsupply {
+  background: url("../img/stats.svg") no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 50%;
+  height: 500px;
+  text-align: center;
+  line-height: 440px;
+  font-size: 1.25em;
+  position: relative;
+  margin: auto
+}
+
+#stats #currentsupply span {
+  text-transform: uppercase;
+  color: #55687a
+}
+
+#stats #currentsupply #supply {
+  margin: auto;
+  font-weight: bold;
+  position: absolute;
+  top: 52%;
+  font-family: 'Poppins', sans-serif;
+  color: #00254b;
+  font-size: 2.15em;
+  line-height: 0;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+#stats #batchsupply {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+//  top: 35%
+}
+
+#stats #batchsupply #minsupply,
+#stats #batchsupply #maxsupply {
+  width: 25%;
+  color: #55687a;
+  text-transform: uppercase;
+  text-align: center
+}
+
+#stats #batchsupply #minsupply .amount,
+#stats #batchsupply #maxsupply .amount {
+  position: relative;
+  color: #00254b;
+  font-size: 2em;
+  top: 5px;
+  font-family: 'Poppins', sans-serif
+}
+
+#stats #batchsupply #minsupply img,
+#stats #batchsupply #maxsupply img {
+  width: 100%;
+  margin: auto;
+  max-width: 115px;
+  margin-top: 30px;
+  display: block
+}
+
+#stats #batchsupply #minsupply {
+  float: left
+}
+
+#stats #batchsupply #maxsupply {
+  float: right
+}
+
+#stats .statsrow {
+  list-style: none;
+  margin-top: 50px
+}
+
+#stats .statsrow li {
+  text-align: center;
+  float: left;
+  width: 33.3%;
+  color: #55687a;
+  text-transform: uppercase;
+  margin-bottom: 50px
+}
+
+#stats .statsrow li .stat {
+  font-size: 2em;
+  color: #00254b;
+  font-family: 'Poppins', sans-serif
+}
+
+
+@media only screen and (max-width: 1088px) {
+
+  #stats .section-desc {
+    text-align: left
+  }
+  #stats #currentsupply {
+    width: 100%;
+    max-width: 500px
+  }
+  #stats #batchsupply {
+    position: relative
+  }
+  #stats #batchsupply #maxsupply,
+  #stats #batchsupply #minsupply {
+    width: 50%
+  }
+}
+
+.t-h-font-ubuntu
+  font-family 'Ubuntu', sans-serif !important
+
+
+.t-h-font-roboto
+  font-family 'Roboto', sans-serif !important
+
+
+.p1{
+  font-size 20px !important
+  line-height 30px !important
+  font-family: 'Roboto', serif;
+}
+
+
+.community
+  background linear-gradient(rgba(16,60,121,0.6), rgba(0,40,180,0.4)), url("../img/community_bg.jpg")
+  background-image linear-gradient(rgba(16,60,121,0.6), rgba(0,40,180,0.4)), url("../img/community_bg.jpg")
+  background-size cover
+  min-height 200px
+  background-attachment fixed
+
+.footer
+  background #0A1857
+  min-height 30px
+  padding-top 10px
+  color #fff
+
+
+
+.socialMenu
+  width 100%
+  height 100%
+
+  ul
+    margin: 0
+    padding: 0
+
+    li
+      display block
+      min-width 80px
+      margin-right 10px
+      float left
+
+      a
+        color #FFF
+        font-family 'Ubuntu', sans-serif
