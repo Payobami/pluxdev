@@ -8,7 +8,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url','form'));
-		$this->load->library(array('form_validation'));
+		$this->load->library(array('form_validation','session'));
 		$this->load->database();
 
 
@@ -20,6 +20,7 @@ class Welcome extends CI_Controller {
 
 		$this->load->view('template/header.php');
 		$this->load->view('index');
+		$this->load->view('template/footer');
 
 	}
 

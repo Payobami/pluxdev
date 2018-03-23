@@ -28,7 +28,8 @@
                         <a style="font-family: 'Abril Fatface', sans-serif; margin-left: -5px;margin-right: 0px" class="navbar-brand f-s-22 text-center visible-xs" href="#">  Havana<strong class="text-red">Plux</strong></a>
                     </div>
 
-                    <div class="">
+                    <?php if(isset($this->session->loginSession)):?>
+                        <div class="">
                         <div class="menuBar">
                             <div class="visible-xs text-center p-l-20">
                                 <ul class="" style="">
@@ -45,7 +46,7 @@
                                                     <li><a href=""> Publications</a></li>
                                                     <li><a href=""> Profile</a></li>
                                                     <li><a href=""> Settings</a></li>
-                                                    <li><a href=""> Sign out </a></li>
+                                                    <li><a href="<?php echo base_url('authentication/logout')?>"> Sign out </a></li>
                                                 </ul>
                                             </div>
                                         </ul>
@@ -72,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <?php endif ?>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,29 +81,41 @@
                     <div class="visible-xs">
                         <ul class="nav navbar-nav">
                             <li class=""><a href="#" class="active">Home</a> </li>
-                            <li><a href="category.html">Alternate Coin </a> </li>
-                            <li><a href="category.html">Airdrop </a> </li>
-                            <li><a href="category.html">Bitcoin </a> </li>
-                            <li><a href="category.html">Blockchain </a> </li>
-                            <li><a href="category.html">Excahange </a> </li>
-                            <li><a href="category.html">Mining </a></li>
-                            <li><a href="category.html">ICO </a> </li>
-                            <li><a href="<?php echo base_url('authentication/login')?>"> Login </a> </li>
-                            <li><a href="<?php echo base_url('authentication/register')?>"> Register </a> </li>
+
+                            <?php
+
+                                //get all the category from the table
+
+                            $this->db->where("status='0'");
+                            //echo $this->db->count_all_results('plux_category');
+                            $getCat = $this->db->get('plux_category')->result_array();
+
+                            foreach($getCat as $cat):
+                            ?>
+
+                                <li><a href="<?php echo base_url('category/').str_replace(' ','-', $cat['cat_name']).'/'.$cat['cat_uid'] ?>"><?php echo $cat['cat_name'] ?></a> </li>
+
+                            <?php endforeach?>
+
+                            <?php if(!isset($this->session->loginSession)):?>
+                                <li><a href="<?php echo base_url('authentication/login')?>"> Login </a></li>
+                                <li><a href="<?php echo base_url('authentication/register')?>"> Register </a></li>
+                            <?php endif  ?>
+
                         </ul>
                     </div>
 
 
-                    <div class="col-sm-4 hidden" hidden>
-                        <ul class="nav navbar-nav chover">
-                            <li class="active"><a href="#">Trending <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">New</a></li>
+                    <div class="col-sm-3 hidden" hidden>
+                        <ul class="nav navbar-nav chover p-t-20">
+                            <li class="p-t-3" style="border: 1px solid #d2d2d2;height: 30px; background: #f2f2f2; border-radius: 15px"><a href="#" style="margin-top: -20px">Havanacoin.co <span class="sr-only">(current)</span></a></li>
+                            <!--<li><a href="#">New</a></li>
                             <li><a href="#">Popular</a></li>
-                            <li><a href="#">Rated</a></li>
+                            <li><a href="#">Rated</a></li>-->
                         </ul>
                     </div>
 
-                    <div class="col-sm-4 col-sm-offset-4 hidden-xs">
+                    <div class="col-sm-4 col-sm-offset-4 hidden-xs text-center">
                         <div class="middle-logo text-center">
                             <a href=""><h6> <img src="<?php echo base_url()?>img/logo/logo.png" width="30"> Havana<span>Plux</span></h6></a>
                         </div>
@@ -111,6 +124,8 @@
 
                     <div class="col-sm-4 hidden-xs" style="z-index: 99999999999999999999">
                         <ul class="nav navbar-nav navbar-right user-right" style="z-index: 99999999100000 !important;">
+                            <?php if(isset($this->session->loginSession)):?>
+
                             <li class="dropdown" style="z-index: 99999999999999999999">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <img class="" src="<?php echo base_url()?>user_pic/avatar_280x280.png" width="25" style="margin-top:-7px">
@@ -125,12 +140,10 @@
                                             <li><a href=""> Publications</a></li>
                                             <li><a href=""> Profile</a></li>
                                             <li><a href=""> Settings</a></li>
-                                            <li><a href=""> Sign out </a></li>
+                                            <li><a href="<?php echo base_url('authentication/logout')?>"> Sign out </a></li>
                                         </ul>
 
                                     </div>
-
-
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -149,8 +162,13 @@
                             <li>
                                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Publish a New Story"><i class="glyphicon glyphicon-pencil"></i> </a>
                             </li>
-                            <li><a href="<?php echo base_url('authentication/login')?>"> Login </a></li>
-                            <li><a href="<?php echo base_url('authentication/register')?>"> Register </a></li>
+                            <?php endif ?>
+
+
+                            <?php if(!isset($this->session->loginSession)):?>
+                                <li><a href="<?php echo base_url('authentication/login')?>"> Login </a></li>
+                                <li><a href="<?php echo base_url('authentication/register')?>"> Register </a></li>
+                            <?php endif  ?>
                         </ul>
                     </div>
 
@@ -166,15 +184,22 @@
         <div class="pn-ProductNav_Wrapper" style="">
             <nav id="pnProductNav" class="pn-ProductNav dragscroll" style="z-index: 1;position:relative;">
                 <div id="pnProductNavContents" class="pn-ProductNav_Contents">
-                    <a href="index.html" class="pn-ProductNav_Link" aria-selected="true">Home</a>
-                    <a href="category.html" class="pn-ProductNav_Link">Alternate Coin </a>
-                    <a href="category.html" class="pn-ProductNav_Link">Airdrop </a>
-                    <a href="category.html" class="pn-ProductNav_Link">Bitcoin</a>
-                    <a href="category.html" class="pn-ProductNav_Link">Trading</a>
-                    <a href="category.html" class="pn-ProductNav_Link">Blockchain </a>
-                    <a href="category.html" class="pn-ProductNav_Link">Excahange</a>
-                    <a href="category.html" class="pn-ProductNav_Link">ICO </a>
 
+                    <a href="<?php echo base_url()?>" class="pn-ProductNav_Link" aria-selected="true">Home</a>
+
+                    <?php
+                    //get all the category from the table
+
+                    $this->db->where("status='0'");
+                    //echo $this->db->count_all_results('plux_category');
+                    $getCat = $this->db->get('plux_category')->result_array();
+
+                    foreach($getCat as $cat):
+                    ?>
+
+                    <a href="<?php echo base_url('category/'). str_replace(' ','-', $cat['cat_name']).'/'.$cat['cat_uid'] ?>" class="pn-ProductNav_Link"><?php echo $cat['cat_name'] ?></a>
+
+                    <?php endforeach ?>
 
                     <span id="pnIndicator" class="pn-ProductNav_Indicator"></span>
                 </div>
